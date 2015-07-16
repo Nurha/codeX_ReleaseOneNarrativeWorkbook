@@ -1,0 +1,47 @@
+var assert = require("assert");
+var Products = require("../products");
+describe("Find data in file", function(){
+
+
+    it('should return a unique list of product names in the file asynchronously', function(done){
+	var results = [ { products: 'Milk', qtySold: '3' },
+  { products: 'Bread', qtySold: '7' },
+  { products: 'Coffee', qtySold: '1' },
+  { products: 'Milk', qtySold: '5' },
+  { products: 'Bread', qtySold: '12' },
+  { products: 'Coffee', qtySold: '4' },
+  { products: 'Milk', qtySold: '7' },
+  { products: 'Bread', qtySold: '16' },
+  { products: 'Coffee', qtySold: '7' },
+  { products: 'Milk', qtySold: '7' },
+  { products: 'Bread', qtySold: '16' },
+  { products: 'Coffee', qtySold: '7' },
+  { products: 'Milk', qtySold: '7' },
+  { products: 'Bread', qtySold: '16' },
+  { products: 'Coffee', qtySold: '7' } ];
+
+        
+        var products = products.productNames('./files/products.csv');
+        {
+            assert.deepEqual(results, products);
+
+            done();
+        });
+
+    });
+
+    it('should return the total number of items sold for each product', function(done){
+        var Products = require("../products");
+
+        var products = new Products('./files/products.csv');
+        products.productsSold(function(err, products){
+
+            assert.equal(29, products['Milk']);
+            assert.equal(67, products['Bread']);
+            assert.equal(26, products['Coffee']);
+
+            done();
+        });
+
+    });
+});

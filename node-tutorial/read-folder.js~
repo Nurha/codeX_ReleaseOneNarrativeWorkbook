@@ -1,0 +1,45 @@
+
+
+var fs = require('fs');//file system object
+
+exports.linesInFiles = function(folderName) {
+	
+	var files = fs.readdirSync(folderName);//reading the directory of where the files are
+	var productList = [];// tells us everything should be in an array
+
+	files.forEach(function(fileName) { //finds all the files in the folder, forEach is a loop
+
+		var fileContent = fs.readFileSync(folderName + '/' + fileName, 'utf8');//returns the content of the file, use utf8 to convert computer lang to human lang
+		var products = fileContent.split('\n');//\n new line character, splits the content of the files into individual content
+
+		products.forEach(function(product) {
+			productList.push(product);//then push each row to a list
+		});
+		
+		return productList;//return the list that contains all the lines off all the files.
+	};
+
+
+exports.linesInFilesAsync('./files/week1', function(err, ){
+
+	var files = fs.readdir(folderName);
+	var productList = [];
+
+	files.forEach(function(fileName) { 
+
+		var fileContent = fs.readFile(folderName + '/' + fileName, 'utf8');
+		var products = fileContent.split('\n');
+
+		products.forEach(function(product) {
+			productList.push(product);
+		});
+		
+		return productList;
+ 
+
+	 });  
+
+
+
+  
+

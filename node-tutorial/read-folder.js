@@ -76,6 +76,3 @@ exports.linesInFilesAsync = function(folderName, callback) {
 };
 
 
-
-  
-
